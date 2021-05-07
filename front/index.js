@@ -30,7 +30,7 @@ async function displayStore () {
 
         itemCard.setAttribute('href', `product.html?${itemId}`)
         itemName.innerText = item.name
-        itemPrice.innerText = item.price/500 + '0 €'
+        itemPrice.innerText = item.price/200 + '0 €'
         itemImg.setAttribute('src', item.imageUrl)
         itemDescription.innerText = item.description
         itemCard.append(itemName, itemImg, itemPrice, itemDescription)
