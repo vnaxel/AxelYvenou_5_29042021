@@ -1,4 +1,5 @@
 displayStore()
+displayCartCount()
 
 function getItems () {
     return fetch('http://localhost:3000/api/furniture')
@@ -30,11 +31,27 @@ async function displayStore () {
 
         itemCard.setAttribute('href', `product.html?${itemId}`)
         itemName.innerText = item.name
-        itemPrice.innerText = item.price/200 + '0 €'
+        itemPrice.innerText = item.price/100 + '.00 €'
         itemImg.setAttribute('src', item.imageUrl)
         itemDescription.innerText = item.description
         itemCard.append(itemName, itemImg, itemPrice, itemDescription)
 
         store.append(itemCard)
     })
+}
+
+function displayCartCount() {
+    let cartCount = document.getElementById('cartCount')
+
+    if (window.localStorage.length === 0) {
+        cartCount.innerText = "0"
+    }else{
+        let amount = 0
+        for (let i = 0; i < localStorage.length; i++) {
+          let item = localStorage.getItem(localStorage.key(i))
+          item = JSON.parse(item)
+          amount += Number(item.amount)
+        }
+        cartCount.innerText = amount
+    }
 }

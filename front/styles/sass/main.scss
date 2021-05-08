@@ -19,6 +19,8 @@ header {
     padding: 0 5rem 3rem 5rem;
     margin: 0 0 3rem 0;
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
     & > h1 {
         position: relative;
         &::before {
@@ -36,6 +38,32 @@ header {
         max-width: 60rem;
         margin: 0;
     }
+    & a {
+        display: flex;
+        align-items: center;
+        font-size: 1.5rem;
+        color: yellowgreen;
+        align-self: flex-end;
+        margin: -3rem 0 0 0;
+        position: relative;
+        text-decoration: none;
+        & span {
+            margin-left: 1rem;
+        }
+        & #cartCount {
+            margin: 0 0.5rem 0 0;
+            padding: 0 0.1rem 0 0;
+            background-color: 000;
+            height: 2rem;
+            width: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 100%;
+            font-size: 1rem;
+        }
+    }
+    
 }
 
 main {
@@ -104,6 +132,7 @@ main {
         }
     }
     &__display {
+        max-width: 800px;
         display: flex;
         flex-direction: column;
         text-decoration: none;
@@ -136,7 +165,7 @@ main {
             }
         }
         &__img {
-            height: 15rem;
+            height: 20rem;
             width: 100%;
             object-fit: cover;
             border-radius: 0.5rem;
@@ -148,9 +177,22 @@ main {
         }
         &__description {
             font-size: 1.2rem;
+            position: relative;
+            &::before {
+                position: absolute;
+                bottom: -0.8rem;
+                left: 0;
+                width: 100%;
+                content: "";
+                background-color: yellowgreen;
+                height: 2px;
+            }
         }
+
+
         &__wrapBtn {
             display: flex;
+            align-items: center;
             &__selectVarnish {
                 margin: 1rem 0 1rem 0;
                 height: 3rem;
@@ -178,6 +220,46 @@ main {
 
 
             }
+            &__amount {
+                margin: 0 1rem -1.6rem 1rem;
+                background: yellowgreen;
+                position: relative;
+                &::before {
+                    content: "How many ?";
+                    position: absolute;
+                    top: -1.6rem;
+                    font-size: 1.3rem;
+                }
+            }
+            &__amountDisplay {
+                height: 2rem;
+                width: 2rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: yellowgreen;
+                border-radius: 100%;
+                font-weight: 600;                
+            }
         }
     }
+}
+
+#popupWrap {
+    position: fixed;
+    padding: 1rem;
+    bottom: 1rem; 
+    right: 1rem;
+
+}
+
+.popup {
+    padding: 1rem;
+    bottom: 1rem;
+    margin: 1rem 0 1rem 0;
+    background-color: yellowgreen;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    border: 4px solid white;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
 }
