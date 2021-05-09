@@ -7,7 +7,7 @@ body {
 
 h1 {
   font-family: "Mandali", sans-serif;
-  font-size: 6rem;
+  font-size: 5rem;
   margin: 0;
   text-shadow: -3px 2px 2px yellowgreen;
 }
@@ -42,12 +42,13 @@ header a {
   font-size: 1.5rem;
   color: yellowgreen;
   align-self: flex-end;
-  margin: -3rem 0 0 0;
+  margin: -1rem 0 0 0;
   position: relative;
   text-decoration: none;
 }
 header a span {
   margin-left: 1rem;
+  text-decoration: overline;
 }
 header a #cartCount {
   margin: 0 0.5rem 0 0;
@@ -60,6 +61,7 @@ header a #cartCount {
   border-radius: 100%;
   font-size: 1rem;
   border: 4px solid yellowgreen;
+  font-weight: 600;
 }
 
 main {
@@ -68,11 +70,9 @@ main {
 
 .store {
   margin: 0 0 6rem 0;
-  padding: 2rem;
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   flex-wrap: wrap;
-  border: 2.5px solid yellowgreen;
   border-radius: 0.5rem;
 }
 
@@ -105,7 +105,6 @@ main {
 }
 .item__img {
   height: 10rem;
-  width: 23rem;
   object-fit: cover;
   border-radius: 0.5rem;
 }
@@ -115,7 +114,6 @@ main {
 }
 .item__description {
   font-size: 1.3rem;
-  width: 23rem;
   position: relative;
 }
 .item__description::before {
@@ -128,7 +126,7 @@ main {
   height: 2px;
 }
 .item__display {
-  max-width: 800px;
+  grid-column: 1/-1;
   display: flex;
   flex-direction: column;
   text-decoration: none;
@@ -244,7 +242,7 @@ main {
 
 .popup {
   padding: 1rem;
-  bottom: 1rem;
+  top: 1rem;
   margin: 1rem 0 1rem 0;
   background-color: yellowgreen;
   border-radius: 0.5rem;
@@ -253,21 +251,66 @@ main {
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
 }
 
+ul {
+  padding: 0;
+}
+
 .cart .listedItem {
+  margin: 1rem 0 1rem 0;
   width: 100%;
   display: flex;
 }
 .cart .listedItemname {
   width: 30%;
 }
-.cart .listedItemamount {
-  width: 30%;
+.cart .listedItemamountSelector {
+  width: 10%;
 }
 .cart .listedItemUnitprice {
   width: 20%;
+  margin-left: 2rem;
 }
 .cart .listedItemTotalPrice {
   width: 20%;
+}
+.cart .listedItemdeleteBtn {
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.cart__header {
+  width: 100%;
+  display: flex;
+  font-weight: 600;
+}
+.cart__header__name {
+  width: 30%;
+}
+.cart__header__amount {
+  width: 10%;
+}
+.cart__header__unitprice {
+  width: 20%;
+  margin-left: 2rem;
+}
+.cart__header__totalPrice {
+  width: 20%;
+}
+
+.orderPrice {
+  font-weight: 600;
+  min-width: 100%;
+  position: relative;
+}
+.orderPrice::before {
+  position: absolute;
+  bottom: -1rem;
+  left: 0;
+  width: 100%;
+  content: "";
+  background-color: yellowgreen;
+  height: 3px;
 }
 
 /*# sourceMappingURL=style.css.map */

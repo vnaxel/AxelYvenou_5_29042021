@@ -30,9 +30,13 @@ function displayCart () {
             amountSelector.setAttribute('value', `${item.amount}`)
 
             amountSelector.addEventListener('change', () => { 
-                if (amountSelector.value == 0) {
+                if (amountSelector.value == 0 | amountSelector.value === null) {
                     localStorage.removeItem(key)
                     displayItem.remove()
+                    displayOrderTotalPrice()
+                    if (window.localStorage.length === 0) {
+                        cart.innerHTML = "Panier vide"
+                    }
                     return
                 }
                 let changeAmount = localStorage.getItem(key)
@@ -42,6 +46,8 @@ function displayCart () {
                 window.localStorage.setItem(key, changeAmount)
                 cart.innerHTML = ""
                 displayCart()
+                displayOrderTotalPrice()
+
             })
 
             deleteBtn.addEventListener('click', (e) => {
@@ -50,6 +56,8 @@ function displayCart () {
                 displayItem.remove()
                 cart.innerHTML = ""
                 displayCart()
+                displayOrderTotalPrice()
+
             })
 
             displayItemName.innerText = item.name + ' ' + item.varnish
@@ -59,7 +67,24 @@ function displayCart () {
             displayItem.append(displayItemName, amountSelector, displayItemUnitPrice, displayItemTotalPrice, deleteBtn)
             cart.append(displayItem)
         })
+
+        displayOrderTotalPrice()
+
+        function displayOrderTotalPrice () {
+            const orderTotalPrice = document.getElementById('orderTotalPrice')
+            orderTotalPrice.innerHTML = ""
+            let total = 0
+            Object.keys(localStorage).map((key) => {
+                let item = localStorage.getItem(key)
+                item = JSON.parse(item)
+                total += item.price*item.amount
+            })
+            if (total == 0 | total === null) {
+                orderTotalPrice.innerHTML = ""
+            }else{
+                total = total/100 + ".00 €"
+                orderTotalPrice.innerHTML = `Order total price : ${total}`
+            }
+        }
     }
 }
-
-// console.log(window.localStorage)
