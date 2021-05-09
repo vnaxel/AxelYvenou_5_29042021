@@ -51,7 +51,6 @@ header a span {
 }
 header a #cartCount {
   margin: 0 0.5rem 0 0;
-  padding: 0 0.1rem 0 0;
   background-color: 0;
   height: 2rem;
   width: 2rem;
@@ -60,6 +59,7 @@ header a #cartCount {
   justify-content: center;
   border-radius: 100%;
   font-size: 1rem;
+  border: 4px solid yellowgreen;
 }
 
 main {
@@ -230,6 +230,7 @@ main {
   align-items: center;
   justify-content: center;
   background-color: yellowgreen;
+  border: 2px solid black;
   border-radius: 100%;
   font-weight: 600;
 }
@@ -250,6 +251,23 @@ main {
   font-weight: 600;
   border: 4px solid white;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.cart .listedItem {
+  width: 100%;
+  display: flex;
+}
+.cart .listedItemname {
+  width: 30%;
+}
+.cart .listedItemamount {
+  width: 30%;
+}
+.cart .listedItemUnitprice {
+  width: 20%;
+}
+.cart .listedItemTotalPrice {
+  width: 20%;
 }
 
 /*# sourceMappingURL=style.css.map */
