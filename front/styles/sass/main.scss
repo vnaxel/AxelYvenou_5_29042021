@@ -328,3 +328,12 @@ ul {
         height: 3px;
     }
 }
+
+form {
+display: flex;
+flex-direction: column;
+margin-top: 3rem;
+    & .order {
+        margin-top: 1rem;
+    }
+}

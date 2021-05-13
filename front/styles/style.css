@@ -313,4 +313,13 @@ ul {
   height: 3px;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3rem;
+}
+form .order {
+  margin-top: 1rem;
+}
+
 /*# sourceMappingURL=style.css.map */
