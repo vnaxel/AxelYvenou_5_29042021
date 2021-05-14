@@ -197,6 +197,7 @@ function order () {
         .then(res => res.json())
         .then(res => {
             console.log(res)
+            localStorage.clear()
             sessionStorage.setItem('processingOrder', JSON.stringify(res))
             window.location.href = `ty.html?${res.orderId}`
         })

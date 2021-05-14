@@ -61,7 +61,7 @@ header {
             justify-content: center;
             border-radius: 100%;
             font-size: 1rem;
-            border: 4px solid yellowgreen;
+            border: 3px solid yellowgreen;
             font-weight: 600;
         }
     }
@@ -335,5 +335,14 @@ flex-direction: column;
 margin-top: 3rem;
     & .order {
         margin-top: 1rem;
+    }
+}
+
+.ty {
+    display: flex;
+    flex-direction: column;
+    &__tableOfItems {
+        display: flex;
+        flex-direction: column;
     }
 }
