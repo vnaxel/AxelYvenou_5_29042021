@@ -89,37 +89,80 @@ function displayCart () {
 }
 
 
-
 //  --- FORM & ORDER ---
 
 const orderBtn = document.getElementById('order')
+
 orderBtn.addEventListener('click', (e) => {
     e.preventDefault()
-    order()
+    let check = checkOrder()
+    switch (check) {
+        case false :
+            break
+        case true :
+            order()
+            break
+    }
 })
+
+// recupere et cree l'objet contact depuis le formulaire
+function getContact () {
+
+    const firstName = document.getElementById('firstName').value
+    const lastName = document.getElementById('lastName').value
+    const address = document.getElementById('address').value
+    const city = document.getElementById('city').value
+    const email = document.getElementById('email').value
+
+    const contact = {
+        firstName : firstName,
+        lastName : lastName,
+        address : address,
+        city : city,
+        email : email
+    }
+    return contact
+}
+
+// Check la présence d'au moins 1 item dans le panier et la validité du formulaire
+function checkOrder () {
+
+    const contact = getContact()
+
+    const nameRegEx = /^[a-zA-Z]'?[-a-zA-Z]+$/
+    const addressRegEx = /^[a-zA-Z0-9\s,'-.]/
+    const emailRegEx = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+    if (window.localStorage.length === 0) {
+        alert("there is no item in your cart")
+        return false
+    }
+    if (nameRegEx.test(contact.firstName) === false) {
+        alert("firstName is invalid")
+        return false
+    }
+    if (nameRegEx.test(contact.lastName) === false) {
+        alert("lastName is invalid")
+        return false
+    }
+    if (addressRegEx.test(contact.address) === false) {
+        alert("address is invalid")
+        return false
+    }
+    if (nameRegEx.test(contact.city) === false) {
+        alert("city is invalid")
+        return false
+    }
+    if (emailRegEx.test(contact.email) === false) {
+        alert("email is invalid")
+        return false
+    }
+    return true
+}
 
 function order () {
     
     postOrder()
-
-// recupere et cree l'objet contact depuis le formulaire
-    function getContact () {
-
-        const firstName = document.getElementById('firstName').value
-        const lastName = document.getElementById('lastName').value
-        const adress = document.getElementById('adress').value
-        const city = document.getElementById('city').value
-        const email = document.getElementById('email').value
-
-        const contact = {
-            firstName : firstName,
-            lastName : lastName,
-            address : adress,
-            city : city,
-            email : email
-        }
-        return contact
-    }
     
 // recupere les Id des produit dans le local storage et crée l'objet produits
     function getProductIds () {
@@ -154,6 +197,8 @@ function order () {
         .then(res => res.json())
         .then(res => {
             console.log(res)
+            sessionStorage.setItem('processingOrder', JSON.stringify(res))
+            window.location.href = `ty.html?${res.orderId}`
         })
     }
 
