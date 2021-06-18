@@ -81,7 +81,6 @@ footer {
 .store {
   display: grid;
   flex-wrap: wrap;
-  border-radius: 0.5rem;
 }
 
 @media screen and (min-width: 1201px) {
@@ -104,7 +103,7 @@ footer {
     margin: auto;
   }
 }
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 900px) {
   .store {
     grid-template-columns: 1fr;
   }
@@ -178,7 +177,7 @@ footer {
   z-index: 1;
 }
 .item__display__name {
-  font-size: 3rem;
+  font-size: 2rem;
   position: relative;
   margin: -3.77rem 0 3rem 0;
   text-shadow: -1px 1px 2px yellowgreen;
@@ -222,7 +221,7 @@ footer {
 }
 .item__display__wrapBtn__selectVarnish {
   margin: 1rem 0 1rem 0;
-  height: 3rem;
+  height: 4rem;
   width: 20rem;
   font-size: 1.5rem;
   font-size: 1.5rem;
@@ -235,7 +234,7 @@ footer {
 }
 .item__display__wrapBtn__addToCart {
   margin: 1rem 0rem 1rem 1rem;
-  height: 3rem;
+  height: 4rem;
   flex-grow: 1;
   background-color: #b8dc70;
   border-radius: 0.5rem;
@@ -259,7 +258,9 @@ footer {
 }
 .item__display__wrapBtn__amountDisplay {
   height: 2rem;
+  min-height: 2rem;
   width: 2rem;
+  min-width: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -269,6 +270,30 @@ footer {
   font-weight: 600;
 }
 
+@media screen and (max-width: 900px) {
+  .store {
+    display: flex;
+  }
+
+  .item {
+    margin: 1rem 0 1rem 0;
+  }
+  .item__display {
+    margin: auto;
+  }
+  .item__display__wrapBtn {
+    flex-direction: column;
+  }
+  .item__display__wrapBtn__amount {
+    margin: 2rem 2rem 1rem 2rem;
+  }
+  .item__display__wrapBtn__selectVarnish {
+    width: 10rem;
+  }
+  .item__display__wrapBtn__addtocart {
+    margin: 1rem;
+  }
+}
 #popupWrap {
   position: fixed;
   padding: 1rem;
@@ -295,6 +320,9 @@ ul .listeditemName {
   text-overflow: ellipsis;
   overflow: hidden;
 }
+ul .listeditemamountselector {
+  font-size: 1rem;
+}
 
 .cart__header, .orderprice {
   font-size: 1.3rem;
@@ -312,7 +340,7 @@ ul .listeditemName {
   width: 30%;
 }
 .cart .listedItemamountSelector {
-  width: 10%;
+  width: 20%;
 }
 .cart .listedItemUnitprice {
   width: 20%;
@@ -336,7 +364,7 @@ ul .listeditemName {
   width: 30%;
 }
 .cart__header__amount {
-  width: 10%;
+  width: 20%;
 }
 .cart__header__unitprice {
   width: 20%;
