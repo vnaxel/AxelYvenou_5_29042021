@@ -9,12 +9,14 @@ h1 {
   font-family: "Mandali", sans-serif;
   font-size: 5rem;
   margin: 0;
-  text-shadow: -3px 2px 2px yellowgreen;
+  text-shadow: -5px 5px 1px yellowgreen;
 }
 
 header {
-  padding: 0 5rem 3rem 5rem;
-  margin: 0 0 3rem 0;
+  padding: 0 2rem 3rem 2rem;
+  margin: 0 0 2rem 0;
+  background-color: #242424;
+  color: white;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
   display: flex;
   flex-direction: column;
@@ -65,17 +67,48 @@ header a #cartCount {
 }
 
 main {
-  margin: 4rem 6rem 0 6rem;
+  margin: 2rem;
+  min-height: 55vh;
+}
+
+footer {
+  background-color: #1b1b1b;
+  padding: 2rem;
+  margin-top: 3rem;
+  color: white;
 }
 
 .store {
-  margin: 0 0 6rem 0;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
   flex-wrap: wrap;
   border-radius: 0.5rem;
 }
 
+@media screen and (min-width: 1201px) {
+  .store {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  main {
+    width: 60%;
+    margin: auto;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .store {
+    grid-template-columns: 1fr;
+  }
+
+  main {
+    width: 80%;
+    margin: auto;
+  }
+}
+@media screen and (max-width: 750px) {
+  .store {
+    grid-template-columns: 1fr;
+  }
+}
 .item {
   display: flex;
   flex-direction: column;
@@ -84,7 +117,7 @@ main {
   padding: 2rem;
   margin: 2rem;
   border-radius: 0.5rem;
-  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
+  box-shadow: 5px 5px 10px 4px rgba(0, 0, 0, 0.4);
 }
 .item__name {
   margin: -1rem 0 2rem 0;
@@ -210,6 +243,9 @@ main {
   font-weight: 600;
   border: none;
 }
+.item__display__wrapBtn__addToCart:hover {
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+}
 .item__display__wrapBtn__amount {
   margin: 0 1rem -1.6rem 1rem;
   background: yellowgreen;
@@ -254,7 +290,19 @@ main {
 ul {
   padding: 0;
 }
+ul .listeditemName {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
 
+.cart__header, .orderprice {
+  font-size: 1.3rem;
+}
+
+.cart {
+  font-size: 1.2rem;
+}
 .cart .listedItem {
   margin: 1rem 0 1rem 0;
   width: 100%;
@@ -318,17 +366,43 @@ form {
   flex-direction: column;
   margin-top: 3rem;
 }
+form label {
+  font-size: 1.2rem;
+  font-weight: 600;
+  position: relative;
+}
 form .order {
   margin-top: 1rem;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  background-color: yellowgreen;
+  font-weight: 600;
+  font-size: 1.5rem;
+  border: none;
+}
+form .order:hover {
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+}
+form .order:active {
+  background-color: #b8dc70;
+}
+form input {
+  font-size: 1.1rem;
+  padding: 0.3rem;
+  margin-bottom: 1rem;
 }
 
 .ty {
   display: flex;
   flex-direction: column;
+  font-size: 1.2rem;
 }
 .ty__tableOfItems {
   display: flex;
   flex-direction: column;
+}
+.ty__totalprice {
+  font-weight: 600;
 }
 
 /*# sourceMappingURL=style.css.map */

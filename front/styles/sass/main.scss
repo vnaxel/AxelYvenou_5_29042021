@@ -12,12 +12,14 @@ h1 {
     font-family: 'Mandali', sans-serif;
     font-size: 5rem;
     margin: 0;
-    text-shadow: -3px 2px 2px yellowgreen;
+    text-shadow: -5px 5px 1px yellowgreen;
 }
 
 header {
-    padding: 0 5rem 3rem 5rem;
-    margin: 0 0 3rem 0;
+    padding: 0 2rem 3rem 2rem;
+    margin: 0 0 2rem 0;
+    background-color: rgb(36, 36, 36);
+    color: white;
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
     display: flex;
     flex-direction: column;
@@ -69,16 +71,48 @@ header {
 }
 
 main {
-    margin: 4rem 6rem 0 6rem;
+    margin: 2rem;
+    min-height: 55vh;
+}
 
+footer {
+    background-color: rgb(27, 27, 27);
+    padding: 2rem;
+    margin-top: 3rem;
+    color: white;
 }
 
 .store {
-    margin: 0 0 6rem 0;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
     flex-wrap: wrap;
     border-radius: 0.5rem;
+}
+
+@media screen and (min-width: 1201px) {
+    .store {
+        grid-template-columns: 1fr 1fr;
+    }
+    main {
+        width: 60%;
+        margin: auto;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .store {
+        grid-template-columns: 1fr;
+    }
+    main {
+        width: 80%;
+        margin: auto;
+    }
+    
+}
+
+@media screen and (max-width: 750px) {
+    .store {
+        grid-template-columns: 1fr;
+    }
 }
 
 .item {
@@ -89,7 +123,7 @@ main {
     padding: 2rem;
     margin: 2rem;
     border-radius: 0.5rem;
-    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
+    box-shadow: 5px 5px 10px 4px rgba(0, 0, 0, 0.4);
     &__name {
         margin: -1rem 0 2rem 0;
         text-shadow: -1px 1px yellowgreen;
@@ -214,9 +248,9 @@ main {
                 font-size: 1.5rem;
                 font-weight: 600;
                 border: none;
-                
-
-
+                &:hover {
+                    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+                }
             }
             &__amount {
                 margin: 0 1rem -1.6rem 1rem;
@@ -265,9 +299,19 @@ main {
 
 ul {
     padding: 0;
+    & .listeditemName {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
 }
 
+.cart__header, .orderprice {
+    font-size: 1.3rem;
+
+}
 .cart {
+    font-size: 1.2rem;
     & .listedItem {
         margin: 1rem 0 1rem 0;
         width: 100%;
@@ -333,16 +377,42 @@ form {
 display: flex;
 flex-direction: column;
 margin-top: 3rem;
+    & label {
+        font-size: 1.2rem;
+        font-weight: 600;
+        position: relative;
+    }
     & .order {
         margin-top: 1rem;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        background-color: yellowgreen;
+        font-weight: 600;
+        font-size: 1.5rem;
+        border : none;
+        &:hover {
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+        }
+        &:active {
+            background-color: lighten(yellowgreen, 15%);
+        }
+    }
+    & input {
+        font-size: 1.1rem;
+        padding: 0.3rem;
+        margin-bottom: 1rem;
     }
 }
 
 .ty {
     display: flex;
     flex-direction: column;
+    font-size: 1.2rem;
     &__tableOfItems {
         display: flex;
         flex-direction: column;
+    }
+    &__totalprice {
+        font-weight: 600;
     }
 }

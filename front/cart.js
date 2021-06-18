@@ -124,6 +124,20 @@ function getContact () {
     return contact
 }
 
+// recupere les Id des produit dans le local storage et crée l'objet produits
+function getProductIds () {
+    const products = []
+
+    Object.keys(localStorage).map((key) => {
+        const product = JSON.parse(localStorage.getItem(key))
+        const productId = product.id
+        for (let i = 0; i < Number(product.amount); i++) {
+        products.push(productId)
+        }
+    })
+    return products
+}
+
 // Check la présence d'au moins 1 item dans le panier et la validité du formulaire
 function checkOrder () {
 
@@ -164,20 +178,6 @@ function order () {
     
     postOrder()
     
-// recupere les Id des produit dans le local storage et crée l'objet produits
-    function getProductIds () {
-        const products = []
-
-        Object.keys(localStorage).map((key) => {
-            const product = JSON.parse(localStorage.getItem(key))
-            const productId = product.id
-            for (let i = 0; i < Number(product.amount); i++) {
-            products.push(productId)
-            }
-        })
-        return products
-    }
-
 // post l'objet order
     async function postOrder () {
         const contact = getContact()
@@ -202,5 +202,4 @@ function order () {
             window.location.href = `ty.html?${res.orderId}`
         })
     }
-
 }

@@ -8,9 +8,7 @@ function displayThanks () {
     const ty = document.getElementById('ty')
 
     const order = JSON.parse(sessionStorage.processingOrder)
-
     const totalPrice = getTotalOrderPrice()
-
     const tableOfItems = getTableOfItems()
 
     const displayThanks = document.createElement('h2')
@@ -39,7 +37,6 @@ function getTotalOrderPrice () {
         totalOrderPrice += p.price
     })
 
-    console.log(totalOrderPrice)
     return totalOrderPrice
 }
 
@@ -60,10 +57,10 @@ function getTableOfItems () {
     order.products.forEach((p) => {
         namesArray.push(p.name)
     })
-    let SetOfNames = new Set(namesArray)
-    let NamesArraySorted = [...SetOfNames]
+    let setOfNames = new Set(namesArray)
+    let namesArraySorted = [...setOfNames]
     let items = []
-    NamesArraySorted.forEach((i) => {
+    namesArraySorted.forEach((i) => {
         let item = {
             name : i,
             counter : 0
