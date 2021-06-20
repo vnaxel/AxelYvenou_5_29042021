@@ -1,13 +1,13 @@
 displayStore()
 displayCartCount()
 
-function getItems () {
+function getItems () {   /** call the API to get products */
     return fetch('http://localhost:3000/api/furniture')
     .then((res) => res.json())
     .then((res) => res)
 }
 
-async function displayStore () {
+async function displayStore () {   /** create card display for each product */
 
     const store = document.getElementById('store')
 
@@ -40,7 +40,7 @@ async function displayStore () {
     })
 }
 
-function displayCartCount() {
+function displayCartCount() { /** display the quantity of items in the cart */
     let cartCount = document.getElementById('cartCount')
 
     if (window.localStorage.length === 0) {

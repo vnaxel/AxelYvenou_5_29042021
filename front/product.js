@@ -1,14 +1,14 @@
 displayItem()
 displayCartCount()
 
-function getItem() {
+function getItem() { /** get item from the api based on the itemId from the URL */
     const itemId = window.location.search.substring(1)
     return fetch(`http://localhost:3000/api/furniture/${itemId}`)
     .then((res) => res.json())
     .then((res) => res)
 }
 
-async function displayItem() {
+async function displayItem() { /** create the item card from the result of api request : item display + varnish and amount selector and the addtocart button */
 
     const store = document.getElementById('store')
 
@@ -78,7 +78,7 @@ async function displayItem() {
         popup()
         displayCartCount()
 
-        function addToCart (key, item) {
+        function addToCart (key, item) { /** add or modify the amount and varnish selected of the item in localStorage (= cart) */
             if(localStorage.getItem(key) === null) {
             window.localStorage.setItem(key, item)
             }else{
@@ -91,7 +91,7 @@ async function displayItem() {
             }
         }
 
-        function popup () {
+        function popup () { /** create a popup (that last 2000ms) with the amount and varnish selected when item is added to cart*/
             const popup = document.createElement('div')
             const popupWrap = document.getElementById('popupWrap')
             popup.classList.add('popup')
@@ -109,7 +109,7 @@ async function displayItem() {
     
 }
 
-function displayCartCount() {
+function displayCartCount() { /** display the amount of item in cart */
     let cartCount = document.getElementById('cartCount')
 
     if (window.localStorage.length === 0) {

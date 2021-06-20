@@ -1,6 +1,6 @@
 displayThanks()
 
-function displayThanks () {
+function displayThanks () { /** if there's no processing order for reasons, redirect to the index page. Else display thanks with the orderID, username, totalprice and tableofitems from the processing order */
     if (!sessionStorage.processingOrder) {
         window.location.href = `../index.html`
     }
@@ -28,7 +28,7 @@ function displayThanks () {
     sessionStorage.removeItem('processingOrder')
 }
 
-function getTotalOrderPrice () {
+function getTotalOrderPrice () { /** sum the price of each items in the processing order to get the totalprice */
 
     const order = JSON.parse(sessionStorage.processingOrder)
     let totalOrderPrice = 0
@@ -40,7 +40,7 @@ function getTotalOrderPrice () {
     return totalOrderPrice
 }
 
-function getTableOfItems () {
+function getTableOfItems () { /** set items from processingOrder to create and display in DOM a resume of the differents items in the processingOrder */
 
     const tableOfItems = document.createElement('div')
     const displayItemHeader = document.createElement('h2')

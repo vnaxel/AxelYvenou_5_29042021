@@ -2,7 +2,7 @@ const cart = document.getElementById('cart')
 
 displayCart()
 
-function displayCart () {
+function displayCart () { /** display the items in cart (localStorage) with modificator re-callin this function when used*/
     if (window.localStorage.length === 0) {
         cart.innerHTML = "cart is empty"
     }else{
@@ -69,7 +69,7 @@ function displayCart () {
 
         displayOrderTotalPrice()
 
-        function displayOrderTotalPrice () {
+        function displayOrderTotalPrice () { /** sum the price of items in cart to get the total */
             const orderTotalPrice = document.getElementById('orderTotalPrice')
             orderTotalPrice.innerHTML = ""
             let total = 0
@@ -93,7 +93,7 @@ function displayCart () {
 
 const orderBtn = document.getElementById('order')
 
-orderBtn.addEventListener('click', (e) => {
+orderBtn.addEventListener('click', (e) => { /** calls order function if checkOrder returns true */
     e.preventDefault()
     let check = checkOrder()
     switch (check) {
@@ -105,8 +105,7 @@ orderBtn.addEventListener('click', (e) => {
     }
 })
 
-// recupere et cree l'objet contact depuis le formulaire
-function getContact () {
+function getContact () { /** get and create the contact object from the form */
 
     const firstName = document.getElementById('firstName').value
     const lastName = document.getElementById('lastName').value
@@ -125,7 +124,7 @@ function getContact () {
 }
 
 // recupere les Id des produit dans le local storage et crée l'objet produits
-function getProductIds () {
+function getProductIds () { 
     const products = []
 
     Object.keys(localStorage).map((key) => {
@@ -138,7 +137,7 @@ function getProductIds () {
     return products
 }
 
-// Check la présence d'au moins 1 item dans le panier et la validité du formulaire
+// returns true if la présence d'au moins 1 item dans le panier et la validité du formulaire
 function checkOrder () {
 
     const contact = getContact()
@@ -178,7 +177,7 @@ function order () {
     
     postOrder()
     
-// post l'objet order
+/** create and posts order Object then redirect to the ty.html page with the orderId from the result of the request*/
     async function postOrder () {
         const contact = getContact()
         const products = getProductIds()
@@ -186,7 +185,6 @@ function order () {
             contact: contact,
             products: products
         }
-        console.log(order)
         return fetch("http://localhost:3000/api/furniture/order", {
             method: 'POST',
             headers: {
@@ -196,7 +194,6 @@ function order () {
         })
         .then(res => res.json())
         .then(res => {
-            console.log(res)
             localStorage.clear()
             sessionStorage.setItem('processingOrder', JSON.stringify(res))
             window.location.href = `ty.html?${res.orderId}`
