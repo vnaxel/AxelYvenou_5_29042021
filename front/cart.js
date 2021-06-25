@@ -185,7 +185,7 @@ function order () {
             contact: contact,
             products: products
         }
-        return fetch("http://localhost:3000/api/furniture/order", {
+        return fetch(`${apiUrl}/api/furniture/order`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

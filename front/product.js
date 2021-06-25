@@ -3,7 +3,7 @@ displayCartCount()
 
 function getItem() { /** get item from the api based on the itemId from the URL */
     const itemId = window.location.search.substring(1)
-    return fetch(`http://localhost:3000/api/furniture/${itemId}`)
+    return fetch(`${apiUrl}/api/furniture/${itemId}`)
     .then((res) => res.json())
     .then((res) => res)
 }

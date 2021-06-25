@@ -2,7 +2,7 @@ displayStore()
 displayCartCount()
 
 function getItems () {   /** call the API to get products */
-    return fetch('http://localhost:3000/api/furniture')
+    return fetch(`${apiUrl}/api/furniture`)
     .then((res) => res.json())
     .then((res) => res)
 }
