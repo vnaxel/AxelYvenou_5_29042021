@@ -340,7 +340,11 @@ ul {
 }
 .cart {
     font-size: 1.2rem;
+    color: red;
+    font-weight: 600;
     & .listedItem {
+        color: black;
+        font-weight: 500;
         margin: 1rem 0 1rem 0;
         width: 100%;
         display: flex;
@@ -415,7 +419,7 @@ margin-top: 3rem;
         margin-top: 1rem;
         border-radius: 0.5rem;
         padding: 1rem;
-        background-color: yellowgreen;
+        background-color: grey;
         font-weight: 600;
         font-size: 1.5rem;
         border : none;

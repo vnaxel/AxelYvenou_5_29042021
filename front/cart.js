@@ -91,7 +91,80 @@ function displayCart () { /** display the items in cart (localStorage) with modi
 
 //  --- FORM & ORDER ---
 
+// ---- Visual validation for form -----
 
+    const nameRegEx = /^[a-zA-Z]'?[-a-zA-Z]+$/
+    const addressRegEx = /^[a-zA-Z0-9\s,'-.]/
+    const emailRegEx = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+    const firstName = document.getElementById('firstName')
+    const lastName = document.getElementById('lastName')
+    const address = document.getElementById('address')
+    const city = document.getElementById('city')
+    const email = document.getElementById('email')
+
+    const firstNameLabel = document.getElementById('label__firstName')
+    const lastNameLabel = document.getElementById('label__lastName')
+    const addressLabel = document.getElementById('label__address')
+    const cityLabel = document.getElementById('label__city')
+    const emailLabel = document.getElementById('label__email')
+
+    const orderForm = document.getElementById('orderForm')
+
+    orderForm.addEventListener('input', (e) => { 
+       if ( nameRegEx.test(firstName.value) === true &
+            nameRegEx.test(lastName.value) === true &
+            addressRegEx.test(address.value) === true &
+            nameRegEx.test(city.value) === true &
+            emailRegEx.test(email.value) === true &
+            window.localStorage.length !== 0) {
+                orderBtn.style.background='yellowgreen'
+            } else {
+                orderBtn.style.background='grey'
+            }
+    })
+
+    firstName.addEventListener('input', (e) => { 
+        if (nameRegEx.test(firstName.value) === false) {
+            firstNameLabel.style.color="red"
+        } else {
+            firstNameLabel.style.color="black"
+        }
+    })
+
+    lastName.addEventListener('input', (e) => { 
+        if (nameRegEx.test(lastName.value) === false) {
+            lastNameLabel.style.color="red"
+        } else {
+            lastNameLabel.style.color="black"
+        }
+    })
+
+    address.addEventListener('input', (e) => { 
+        if (addressRegEx.test(address.value) === false) {
+            addressLabel.style.color="red"
+        } else {
+            addressLabel.style.color="black"
+        }
+    })
+
+    city.addEventListener('input', (e) => { 
+        if (nameRegEx.test(city.value) === false) {
+            cityLabel.style.color="red"
+        } else {
+            cityLabel.style.color="black"
+        }
+    })
+
+    email.addEventListener('input', (e) => { 
+        if (emailRegEx.test(email.value) === false) {
+            emailLabel.style.color="red"
+        } else {
+            emailLabel.style.color="black"
+        }
+    })
+
+//    ---- Visual validation for form ends here-----
 
 const orderBtn = document.getElementById('order')
 
@@ -139,37 +212,33 @@ function getProductIds () {
     return products
 }
 
-// returns true if la présence d'au moins 1 item dans le panier et la validité du formulaire
+// mecanichal validation for form
 function checkOrder () {
 
     const contact = getContact()
 
-    const nameRegEx = /^[a-zA-Z]'?[-a-zA-Z]+$/
-    const addressRegEx = /^[a-zA-Z0-9\s,'-.]/
-    const emailRegEx = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-
     if (window.localStorage.length === 0) {
-        alert("there is no item in your cart")
+        // alert("there is no item in your cart")
         return false
     }
     if (nameRegEx.test(contact.firstName) === false) {
-        alert("firstName is invalid")
+        // alert("firstName is invalid")
         return false
     }
     if (nameRegEx.test(contact.lastName) === false) {
-        alert("lastName is invalid")
+        // alert("lastName is invalid")
         return false
     }
     if (addressRegEx.test(contact.address) === false) {
-        alert("address is invalid")
+        // alert("address is invalid")
         return false
     }
     if (nameRegEx.test(contact.city) === false) {
-        alert("city is invalid")
+        // alert("city is invalid")
         return false
     }
     if (emailRegEx.test(contact.email) === false) {
-        alert("email is invalid")
+        // alert("email is invalid")
         return false
     }
     return true
