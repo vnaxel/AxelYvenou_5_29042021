@@ -5,7 +5,7 @@ function displayThanks () { /** if there's no processing order for reasons, redi
         window.location.href = `../index.html`
     }
 
-    const ty = document.getElementById('ty')
+    const thanks = document.getElementById('thanks')
 
     const order = JSON.parse(sessionStorage.processingOrder)
     const totalPrice = getTotalOrderPrice()
@@ -15,15 +15,15 @@ function displayThanks () { /** if there's no processing order for reasons, redi
     const displayOrderId = document.createElement('span')
     const displayTotalPrice = document.createElement('span')
 
-    displayThanks.classList.add('ty__thanks')
-    displayOrderId.classList.add('ty__orderId')
-    displayTotalPrice.classList.add('ty__totalPrice')
+    displayThanks.classList.add('thanks__thanks')
+    displayOrderId.classList.add('thanks__orderId')
+    displayTotalPrice.classList.add('thanks__totalPrice')
 
     displayThanks.innerText = `Thanks for your order ${order.contact.firstName}`
     displayOrderId.innerText = `Your order ID is : ${order.orderId}`
     displayTotalPrice.innerText = `Total price : ${totalPrice/100 + ".00 €"}`
 
-    ty.append(displayThanks, displayOrderId, tableOfItems, displayTotalPrice)
+    thanks.append(displayThanks, displayOrderId, tableOfItems, displayTotalPrice)
 
     sessionStorage.removeItem('processingOrder')
 }
@@ -45,8 +45,8 @@ function getTableOfItems () { /** set items from processingOrder to create and d
     const tableOfItems = document.createElement('div')
     const displayItemHeader = document.createElement('h2')
 
-    tableOfItems.classList.add('ty__tableOfItems')
-    displayItemHeader.classList.add('ty__tableOfItems__title')
+    tableOfItems.classList.add('thanks__tableOfItems')
+    displayItemHeader.classList.add('thanks__tableOfItems__title')
 
     displayItemHeader.innerText = "Order resume :"
 
@@ -80,9 +80,9 @@ function getTableOfItems () { /** set items from processingOrder to create and d
         const itemName = document.createElement('span')
         const itemCounter = document.createElement('span')
 
-        displayItem.classList.add('ty__tableOfItems__item')
-        itemName.classList.add('ty__tableOfItems__item__name')
-        itemCounter.classList.add('ty__tableOfItems__item__counter')
+        displayItem.classList.add('thanks__tableOfItems__item')
+        itemName.classList.add('thanks__tableOfItems__item__name')
+        itemCounter.classList.add('thanks__tableOfItems__item__counter')
 
         itemName.innerText = " " + item.name
         itemCounter.innerText = item.counter

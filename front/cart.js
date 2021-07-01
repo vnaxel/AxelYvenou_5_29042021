@@ -91,6 +91,8 @@ function displayCart () { /** display the items in cart (localStorage) with modi
 
 //  --- FORM & ORDER ---
 
+
+
 const orderBtn = document.getElementById('order')
 
 orderBtn.addEventListener('click', (e) => { /** calls order function if checkOrder returns true */
@@ -173,11 +175,13 @@ function checkOrder () {
     return true
 }
 
+
+
 function order () {
     
     postOrder()
     
-/** create and posts order Object then redirect to the ty.html page with the orderId from the result of the request*/
+/** create and posts order Object then redirect to the thanks.html page with the orderId from the result of the request*/
     async function postOrder () {
         const contact = getContact()
         const products = getProductIds()
@@ -196,7 +200,7 @@ function order () {
         .then(res => {
             localStorage.clear()
             sessionStorage.setItem('processingOrder', JSON.stringify(res))
-            window.location.href = `ty.html?${res.orderId}`
+            window.location.href = `thanks.html?${res.orderId}`
         })
     }
 }
